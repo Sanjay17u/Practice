@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { productList } from "../utils/constant";
 import Product from "./Product";
 
 const ProductCard = () => {
   // Local State Variable
   console.log("productList:", productList);
-  const [listOfProduct, setListOfProduct] = useState(productList)
+  const [listOfProduct, setListOfProduct] = useState([])
 
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = async () => {
+    const data = await fetch("https://fakestoreapi.com/products")
+    const resData = await data.json();
+    console.log(resData)
+    setListOfProduct(resData)
+  } 
 
   return (
     <div>
