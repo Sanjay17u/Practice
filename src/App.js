@@ -6,6 +6,7 @@ import ProductCard from "./components/ProductCard";
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router"
 import Kid from "./components/Kid";
 import Men from "./components/Men";
+import ProductDetails from "./components/ProductDeatils";
 
 
 const App = () => {
@@ -35,6 +36,10 @@ const appRouter = createBrowserRouter([
       {
         path:"/men",
         element: <Men/>
+      },
+      {
+        path:"/product/:productId",
+        element: <ProductDetails/>
       },
     ]
   },

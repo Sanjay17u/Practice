@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { productList } from "../utils/constant";
 import Product from "./Product";
 import Skeleton from "./Skeleton";
+import { Link } from "react-router";
 
 const ProductCard = () => {
   // Local State Variable
@@ -50,7 +51,7 @@ const ProductCard = () => {
           <p>No products available</p>
         ) : (
           filteredProduct.map((product) => (
-            <Product key={product.id} product={product} />
+            <Link key={product.id} to={`/product/${product.id}`}><Product product={product} /></Link> 
           ))
         )}
       </div>
