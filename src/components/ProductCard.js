@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { productList } from "../utils/constant";
-import Product from "./Product";
+import Product, { HOF } from "./Product";
 import Skeleton from "./Skeleton";
 import { Link } from "react-router";
 
@@ -22,6 +22,8 @@ const ProductCard = () => {
     setListOfProduct(resData)
     setFilteredProduct(resData)
   } 
+
+  const HOFComponent = HOF(Product)
 
 
   // if(listOfProduct.length === 0) {
@@ -50,8 +52,13 @@ const ProductCard = () => {
         {productList.length === 0 ? (
           <p>No products available</p>
         ) : (
-          filteredProduct.map((product) => (
-            <Link key={product.id} to={`/product/${product.id}`}><Product product={product} /></Link> 
+          filteredProduct.map((product) => ( 
+            <Link key={product.id} to={`/product/${product.id}`}><Product product={product} />
+            {
+              product.rating.rate >= 4 ? <HOFComponent product={product}/> : <Product product={product}/>
+            }
+            <Product product={product}/>
+            </Link> 
           ))
         )}
       </div>

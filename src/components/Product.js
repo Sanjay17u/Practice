@@ -16,3 +16,18 @@ const Product = ({ product }) => {
 };
 
 export default Product;
+
+
+
+export const HOF = (Product) => {
+  return (props) => {
+    return(
+      <>
+        <div>
+          <span>Best Seller</span>
+          <Product {...props}/>
+        </div>
+      </>
+    )
+  }
+}
